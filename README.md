@@ -3,4 +3,5 @@ El presente trabajo aborda el uso y análisis del desempeño de diversas herrami
 Este repositorio se ha dividido en dos carpetas distintas, una por cada tarea:
 1. Diagnóstico prematuro de malignización de pacientes de Gammapatía Monoclonal de Significado Incierto (GMSI) a Mieloma Múltiple (MM) o Mieloma de Waldenstrom (MW) mediante técnicas de machine learning.
 2. Localización visual de robots móviles bajo condiciones de trabajo desafiantes mediante herramientas de deep learning.
+
 Para más información, está disponible el siguiente correo electrónico: malfaro@umh.es
