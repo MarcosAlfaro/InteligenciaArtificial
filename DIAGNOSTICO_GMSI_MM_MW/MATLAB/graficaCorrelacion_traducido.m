@@ -1,0 +1,49 @@
+etiquetas = {'Componente Monoclonal (U)', 'Componente Monoclonal (T)',...
+             'Ratio Kappa/Lambda (U)', 'Ratio Kappa/Lambda (T)',...
+             'IgA (U)', 'IgA (T)', 'IgG (U)', 'IgG (T)',...
+             'IgM (U)', 'IgM (T)', ...
+             'Proteínas totales (U)', 'Proteínas totales (T)',...
+             'Hemoglobina (U)', 'Hemoglobina (T)',...
+             'VCM (U)', 'VCM (T)',...
+             'Leucocitos (U)', 'Leucocitos (T)',...
+             'Plaquetas (U)', 'Plaquetas (T)',...
+             'Neutrófilos (U)', 'Neutrófilos (T)',...
+             'Monocitos (U)', 'Monocitos (T)',...
+             'Linfocitos (U)', 'Linfocitos (T)',...
+             'Albúmina (U)', 'Albúmina (T)',...
+             'Calcio (U)', 'Calcio (T)', 'LDH (U)', 'LDH (T)',...
+             'Creatinina (U)', 'Creatinina (T)',...
+             'Edad', 'IgG/No IgG'};
+% Suponiendo que vectorOrdenado y indices ya están definidos
+figure;
+b = bar(vectorOrdenado); % Crear el gráfico de barras
+title('Análisis de Correlación');
+xlabel('Características');
+ylabel('Coeficiente');
+ylim([-0.2, 0.6]);
+xticks(1:length(indices));
+xticklabels(etiquetas(indices));
+set(gca, 'XTickLabelRotation', 90, 'FontSize', 14);
+
+% Configurando los colores de las barras y las líneas verticales discontinuas
+for i = 1:length(vectorOrdenado)
+    if contains(etiquetas{indices(i)}, '(U)')
+        b.FaceColor = 'flat';
+        b.CData(i,:) = [0 1 0]; % Verde
+    elseif contains(etiquetas{indices(i)}, '(T)')
+        b.FaceColor = 'flat';
+        b.CData(i,:) = [1 0 0]; % Rojo
+    end
+end
+
+% Añadiendo líneas verticales discontinuas
+hold on;
+% lineLocations = find(ismember(etiquetas(indices), {'LDH (L)', 'Albumin (L)', 'MCV (L)', 'IgG (T)', 'Kappa/Lambda Ratio (T)', 'IgM (T)'}));
+lineLocations = find(ismember(etiquetas(indices), {'Albúmina (U)','IgG (T)', 'IgM (T)'}));
+for i = 1:length(lineLocations)
+    x = lineLocations(i) - 0.5; % Entre elementos
+    plot([x x], ylim, '--', 'Color', [1, 0.5, 0]);
+end
+saveas(gcf, 'graficaCorrelacion.png');
+hold off;
+

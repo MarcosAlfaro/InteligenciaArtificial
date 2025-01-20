@@ -1,0 +1,34 @@
+device: "cuda:0"
+
+csvDir: 'CSV'
+figuresDir: 'FIGURES'
+datasetDir: '/media/arvc/DATOS/Marcos/DATASETS/'
+modelsDir: '/media/arvc/DATOS/Marcos/SAVED_MODELS/DEPTH_LOC/'
+
+formatList: ["RGB", "d", "RGBd"]
+testEnv: "FR_A"
+envs: ["SA_B", "SA_A", "FR_B", "FR_A"]
+lenList: [64, 128, 256, 512]
+
+trainLength: 500000
+batchSize: 16
+numModelsSaved: 50
+margin: 0.25
+
+rPos: 0.5
+rNeg: 0.5
+
+kMax: 20
+
+w: 0.6
+
+lf_methods: ["concat", "sum", "weighted"]
+sizeRGB_MLP: 512
+sizeDepth_MLP: 512
+MLP_architecture: [1024, 4096, 1024]
+stopTrainingMLP: 1000
+
+numComponents_PCA: [64]
+PCA_weighted: True
+
+baseModel_MF: '/media/arvc/DATOS/Marcos/SAVED_MODELS/DEPTH_LOC/RGBd/512/net_end'
